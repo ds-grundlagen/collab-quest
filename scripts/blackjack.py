@@ -3,10 +3,9 @@ This code plays a came of blackjack with the user
 """
 
 from random import shuffle
-from typing import List, Tuple
 
 
-RANKS = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"]
+RANKS = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A", "44"]
 SUITS = ["♠", "♥", "♦", "♣"]
 
 
@@ -40,13 +39,13 @@ def show_hand(owner: str, cards: list[str], hide_first: bool = False) -> None:
         print(f"{owner}: {' '.join(cards)} ({hand_value(cards)})")
 
 
-def deal_initial(deck: List[str]) -> Tuple[List[str], List[str]]:
+def deal_initial(deck: list[str]) -> tuple[list[str], list[str]]:
     player = [deck.pop(), deck.pop()]
     dealer = [deck.pop(), deck.pop()]
     return player, dealer
 
 
-def player_turn(deck: List[str], player: List[str], dealer: List[str]) -> Tuple[List[str], bool]:
+def player_turn(deck: list[str], player: list[str], dealer: list[str]) -> tuple[list[str], bool]:
     while True:
         show_hand("Dealer", dealer, hide_first=True)
         show_hand("You", player)
@@ -65,13 +64,13 @@ def player_turn(deck: List[str], player: List[str], dealer: List[str]) -> Tuple[
         print("Please enter 'h' to hit or 's' to stand.")
 
 
-def dealer_turn(deck: List[str], dealer: List[str]) -> List[str]:
+def dealer_turn(deck: list[str], dealer: list[str]) -> list[str]:
     while hand_value(dealer) < 17:
         dealer.append(deck.pop())
     return dealer
 
 
-def decide_winner(player: List[str], dealer: List[str]) -> str:
+def decide_winner(player: list[str], dealer: list[str]) -> str:
     player_total = hand_value(player)
     dealer_total = hand_value(dealer)
     if player_total > 21:
