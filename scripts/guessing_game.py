@@ -10,8 +10,8 @@ while True:
                 guess=int(input('Guess: '))
                 if guess<0:
                     pass
-                elif ran_num==guess
-                print('Just right!')
+                elif ran_num==guess:
+                    print('Just right!')
                     break
                 elif ran_num>guess:
                     print('Too small!')
